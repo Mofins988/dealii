@@ -268,6 +268,20 @@ void second_grid()
 }
 
 
+void third_grid()
+{
+  Triangulation<2> triangulation;
+  const Point<2>   center(1, 0);
+  const double     inner_radius = 0.5, outer_radius = 1.0;
+  GridGenerator::hyper_shell(
+    triangulation, center, inner_radius, outer_radius, 20);
+
+    std::ofstream out("grid-3.svg");
+    GridOut       grid_out;
+    grid_out.write_svg(triangulation, out);
+    std::cout << "Grid written to grid-3.svg" << std::endl;
+
+}
 
 // @sect3{The main function}
 
@@ -277,4 +291,5 @@ int main()
 {
   first_grid();
   second_grid();
+  third_grid();
 }
